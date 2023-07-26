@@ -57,15 +57,18 @@ const Customizer = () => {
     try {
       setGeneratingImg(true);
 
-      const response = await fetch("https://mybackend-threejs.onrender.com", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
+      const response = await fetch(
+        "https://mybackend-threejs.onrender.com/api/v1/dalle",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            prompt,
+          }),
         },
-        body: JSON.stringify({
-          prompt,
-        }),
-      });
+      );
 
       const data = await response.json();
 
